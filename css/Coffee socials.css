@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgba(206, 205, 205, 0.438);
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.header-container {
+  background: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 40px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  margin: 10px 12px;
+  border-radius: 20px;
+  box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.3);
+}
+.header-container a {
+  text-decoration: none;
+}
+.header-container h2 {
+  color: #014d36;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+.header-container h2:hover{
+  color: #00815a;
+  transform: scale(1.05);
+}
+button#back {
+  color: white;
+  font-size: 24px;
+  background: #014d36;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 8px;
+  margin: 10px;
+  transition: 0.3s ease;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+button#back:hover {
+  background: #00815a;
+  transform: scale(1.1);
+}
+.socialsList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.socialsContainer {
+  background: rgb(0, 167, 223);
+  max-width: 350px;
+  width: 100%;
+  border-radius: 50px;
+  margin: 15px;
+  padding: 12px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease;
+}
+.socialsContainer a {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+}
+.socialsContainer a:hover {
+  color: rgb(163, 163, 163);
+}
+.socialsContainer:hover {
+  transform: scale(1.1);
+}
+.socialsLogo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 999;
+}
+.socialsLogo:hover {
+  transform: scale(1.1);
+}
+.socialsContainer.email a {
+  color: black;
+}
+.socialsContainer.email a:hover{
+  color: gray;
+}
+.socialsContainer.minigames a {
+  color: black;
+}
+.socialsContainer.minigames a:hover {
+  color: gray;
+}
+.socialsLogo.tiktok {
+  box-shadow: -1px 0px 10px rgb(255, 255, 255);
+}
+.facebook {
+  background: #1877f2;
+} 
+.instagram {
+  background: #e1306c;
+}
+.telegram {
+  background: #0088cc;
+}
+.x {
+  background: #000;
+}
+.tiktok {
+  background: #010101;
+}
+.email {
+  background: white;
+}
+.minigames {
+  background: white;
+}
+
+/* .shimmer::after {
+  position: absolute;
+  content: "";
+  top: 132px;
+  width: 36%;
+  height: 21%;
+  background: linear-gradient(110deg, #e3e3e300 0%, #e3e3e300 40%, 
+  #e3e3e380 50%, #e3e3e300 60%, #e3e3e300 100%);
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(50%); }
+} */

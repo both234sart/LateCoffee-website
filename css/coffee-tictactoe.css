@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgba(206, 205, 205, 0.438);
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+.header-container {
+  background: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 40px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  margin: 10px 12px;
+  border-radius: 20px;
+  box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.3);
+}
+.header-container a {
+  text-decoration: none;
+}
+.header-container h2 {
+  color: #014d36;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+.header-container h2:hover{
+  color: #00815a;
+  transform: scale(1.05);
+}
+button#back {
+  color: white;
+  font-size: 20px;
+  background: #014d36;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 4rem;
+  padding: 8px;
+  margin: 10px;
+  transition: 0.3s ease;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+button#back:hover {
+  background: #00815a;
+  transform: scale(1.1);
+}
+.cell {
+  margin: 2px;
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
+  font-size: 50px;
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: 1px solid black;
+  user-select: none;
+  background-color: transparent;
+}
+.cell:active {
+  background: none;
+  background-color: transparent;
+}
+#gameContainer {
+  font-family: "Permanent Marker", cursive;
+  text-align: center;
+  margin: 50px;
+}
+#cellContainer {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 225px;
+  margin: auto;
+}
+button {
+  width: 100px;
+  height: auto;
+  margin: 20px;
+  padding: 12px;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: white;
+  background: #014d36;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+}
+button:hover {
+  background: #06805b;
+}

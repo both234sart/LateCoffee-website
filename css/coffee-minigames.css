@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgba(206, 205, 205, 0.438);
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.header-container {
+  background: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 40px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  margin: 10px 12px;
+  border-radius: 20px;
+  box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.3);
+}
+.header-container a {
+  text-decoration: none;
+}
+.header-container h2 {
+  color: #014d36;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+.header-container h2:hover{
+  color: #00815a;
+  transform: scale(1.05);
+}
+
+.menu-btn {
+  color: white;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  background: #026849;
+  padding: 5px 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 260px;
+  height: 100%;
+  background: #026849;
+  padding-top: 60px;
+  transition: 0.3s ease;
+  z-index: 10000;
+}
+.side-menu.open {
+  left: 0;
+}
+.side-menu a {
+  display: block;
+  padding: 15px 25px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+.side-menu a:hover {
+  background: #013a29;
+}
+.side-menu h2 {
+  font-size: 22px;
+  color: white;
+  left: 3px;
+  top: 15px;
+  position: absolute;
+}
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 1001;
+}
+#overlay.show {
+  display: block;
+}
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.close-btn:hover {
+  color: #b8b8b8;
+  transform: scale(1.05);
+}
+.miniGamesList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.miniGamesContainer {
+  background: rgb(0, 167, 223);
+  max-width: 350px;
+  width: 100%;
+  border-radius: 50px;
+  margin: 15px;
+  padding: 12px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease;
+}
+.miniGamesContainer a {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+}
+.miniGamesContainer a:hover {
+  color: rgb(255, 232, 232);
+}
+.miniGamesContainer:hover {
+  transform: scale(1.1);
+}
+.miniGamesLogo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 999;
+}
+.miniGamesLogo:hover {
+  transform: scale(1.1);
+}
+/* .miniGamesContainer a {
+  color: black;
+}
+.miniGamesContainer a:hover{
+  color: gray;
+}
+.miniGamesContainer a {
+  color: black;
+}
+.miniGamesContainer a:hover {
+  color: gray;
+} */
+.rock-paper-scissors {
+  background: rgba(255, 230, 0, 0.808);
+} 
+.tic-tac-toe {
+  background: #ff4800e5;
+}
+.calculator {
+  background: #b8b8b8;
+}
+.text-to-speech {
+  background: #0084ff;
+}
