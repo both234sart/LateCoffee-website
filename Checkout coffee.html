@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width: initial-scale=1.0">
+<title>Checkout-late Coffee</title>
+
+<style>
+  body {
+    background: rgb(196, 194, 194);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .header-container {
+    background: whitesmoke;
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 50px;
+    text-align: center;
+    width: 95%;
+    margin: 15px auto 0 auto;
+    padding: 15px;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 2px 8px 12px rgba(0, 0, 0, 0.3);
+  }
+  h1 {
+    font-size: 50px;
+    color: #014d36;
+  }
+  .checkout-box {
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    color: black;
+    margin: 20px auto 10px auto;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+  }
+  h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #014d36;
+  }
+
+  .item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  .total {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .confirm-btn {
+    width: 100%;
+    padding: 15px;
+    background: #026849;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    margin-top: 15px;
+    border-radius: 10px;
+  }
+  .confirm-btn:hover {
+    background: #014d36;
+  }
+
+  .back-btn {
+    width: 100%;
+    padding: 10px;
+    background: #ff2f20;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+</style>
+</head>
+
+<body>
+<header class="header-container">
+  <h1>Late Coffee</h1>
+</header>
+<ul id="checkoutList">
+  <div class="checkout-box">
+    <h2>Order Summary</h2>  
+    <div id="checkoutItems"></div>
+      <h3 class="total" id="checkoutTotal">Total: $0.00</h3>
+      <button class="confirm-btn" onclick="confirmOrder()">Confirm Order</button>
+      <button class="back-btn" onclick="history.back()"> ⬅ Back to Menu</button>
+  </div>
+  </ul>
+
+  <script>
+
+    const checkoutCart = JSON.parse(localStorage.getItem("checkoutCart")) || [];
+    const checkoutItemsBox = document.getElementById("checkoutItems");
+    const checkoutTotalBox = document.getElementById("checkoutTotal");
+
+    let total = 0;
+
+    checkoutCart.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "item";
+
+      div.innerHTML = `
+      <strong>${item.name}</strong><br>
+      $${item.price.toFixed(2)} x ${item.qty}<br>
+      <small style="color:#555;">
+        <em>Special request:</em> ${item.specials && item.specials.trim() !== ""
+        ? item.specials
+        : "None"}
+      </smal;>
+      `;
+
+      total += item.price * item.qty;
+      checkoutItemsBox.appendChild(div);
+    });
+
+    checkoutTotalBox.textContent = "Total: $" + total.toFixed(2);
+
+    function confirmOrder() {
+      alert("Your Order has been Confirmed!");
+      
+      localStorage.removeItem("checkoutCart");
+      localStorage.removeItem("cartData");
+
+      cart = [];
+
+      window.location.href = "index.html"
+    }
+  </script>
+</body>
+</html>

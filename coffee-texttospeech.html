@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffee Text to Speech</title>
+    <link rel="stylesheet" href="css/coffee-texttospeech.css" />
+    <link rel="icon" href="Image/texttospeech.png" />
+  </head>
+  <body>
+    <header class="header-container">
+      <a href="coffee minigames.html">
+        <h2>Text to Speech</h2>
+      </a>
+    </header>
+    <button
+      id="back"
+      onclick="history.back()"
+      class="flex items-center gap-2 bg-[#026849] text-white px-4 py-2 rounded-lg font-semibold shadow-md transition-all duration-200 ease-in-out hover:bg-[#013a29] hover:scale-105 active:scale-95"
+    >
+      ⬅
+    </button>
+    <textarea id="t" placeholder="Type here..." autofocus></textarea>
+
+    <button
+      onclick="speechSynthesis.speak(new SpeechSynthesisUtterance(t.value))"
+    >
+      📢Speaker
+    </button>
+  </body>
+</html>

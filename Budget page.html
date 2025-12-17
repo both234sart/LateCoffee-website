@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width: initial-scale=1.0">
+<title>Bunny Budget</title>
+<link rel="icon" type="Image/png" href="Image/Bunny Budget.png">
+<head>
+  <style>
+    body {
+      background: linear-gradient(180deg,#2B5F69 20%, #4DB1B3 55%);
+      color: black;
+      font-size: 14px;
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .header-container {
+      text-align: center;
+      width: 95%;
+      height: auto;
+      background: linear-gradient(#2B5F69 20%, #4DB1B3 55%);
+      margin: 20px;
+      padding: 20px;
+      gap: 14px;
+      height: auto;
+      color: whitesmoke;
+      justify-content: space-evenly;
+      align-items: center;
+      display: flex;
+      border-radius: 50px;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+    .budget-box {
+      width: 90%;
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    label {
+      font-weight: bold;
+    }
+    input {
+      width: 95%;
+      margin: 6px 0 15px 0;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid gray;
+      font-size: 14px;
+    }
+    .result-box {
+      background: #eef;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .btn {
+      width: 100%;
+      background: #1a1aff;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #000080;
+    }
+    .logo {
+      width: 86px;
+      height: 86px;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: 0.3s ease;
+    }
+    .logo:hover {
+      transform: scale(1.1);
+    }
+    
+    .menu-btn {
+      width: 40px;
+      height: 30px;
+      flex-direction: column;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      z-index: 10;
+    }
+    .menu-btn div {
+      background: white;
+      margin: 3px 0;
+      padding: 3px;
+      height: 6px;
+      border-radius: 8px;
+    }
+    .menu-btn:hover {
+      transform: scale(1.05);
+    }
+    .dropdown {
+      position: absolute;
+      top: 70px;
+      right: 100px;
+      background-color: white;
+      width: 180px;
+      border-radius: 10px;
+      overflow: hidden;
+      display: none;
+      z-index: 20;
+    }
+    .dropdown a {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      text-align: left;
+      font-size: 17px;
+      color: black;
+      display: block;
+      padding: 20px;
+      text-decoration: none;
+      border-bottom: 1px solid grey;
+    }
+    .dropdown a:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header-container" >
+    <a href="Budget Homepage.html">
+      <img src="Image/Bunny Budget.png" class="logo">
+    </a>
+    <h1>Manage your Budget</h1>
+    <div class="menu-btn" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div class="dropdown" id="dropdownMenu">
+      <a href="Budget Homepage.html">Home</a>
+      <a href="Budget page.html">Budget</a>
+      <a href="">Report</a>
+    </div>
+  </header>
+  <div class="budget-box">
+    <label>Total Income ($):</label>
+    <input type="number" id="income" placeholder="Enter your income">
+    <label>Food ($):</label>
+    <input type="number" id="food" placeholder="Food expense">
+    <label>Rent ($):</label>
+    <input type="number" id="rent" placeholder="Monthly rent">
+    <label>Payments ($):</label>
+    <input type="number" id="payments" placeholder="Monthly payment">
+    <label>Savings ($):</label>
+    <input type="number" id="savings" placeholder="Enter your savings amount">
+    <label>Other expenses ($):</label>
+    <input type="number" id="other" placeholder="Others">
+
+    <button class="btn" onclick="calculateBudget()">Calculate</button>
+
+    <div class="result-box">
+      <p><strong>Total expense:</strong>$<span id="totalExp">0</span></p>
+      <p><strong>Remaining balance:</strong>$<span id="remaining">0</span></p>
+    </div>
+
+    <script>
+      
+      const menu = document.getElementById("dropdownMenu");
+      const button = document.querySelector(".menu-btn");
+
+      function toggleMenu() {
+        let menu = document.getElementById("dropdownMenu");
+        menu.style.display = (menu.style.display === "block") ? "none" : "block";
+      }
+
+      document.addEventListener("click", function(e) {
+        const menu = document.getElementById("dropdownMenu");
+        const button = document.querySelector(".menu-btn");
+        
+        if (!menu.contains(e.target) && !button.contains(e.target)) {
+          menu.style.display= "none";
+        }
+      });
+  
+     function calculateBudget() {
+      let income = Number(document.getElementById("income").value);
+      let food = Number(document.getElementById("food").value);
+      let rent = Number(document.getElementById("rent").value);
+      let payments = Number(document.getElementById("payments").value);
+      let savings = Number(document.getElementById("savings").value);
+      let other = Number(document.getElementById("other").value);
+      
+      let total = food + rent + payments + savings + other;
+      let remaining = income - total;
+
+      document.getElementById("totalExp").textContent = total;
+      document.getElementById("remaining").textContent = remaining;
+     } 
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Late Coffee ☕</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          coffeeGreen: "#026849",
+          coffeeGold: "#ffbb00",
+          coffeeRed: "#ff2f20"
+        }
+      }
+    }
+  };
+</script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+<!-- HEADER -->
+<header class="flex justify-between items-center p-6 bg-white shadow">
+  <h1 class="text-2xl font-bold text-coffeeGreen">Late Coffee ☕</h1>
+  <div class="flex gap-4">
+    <button onclick="openAuth()" class="bg-coffeeGreen text-white px-4 py-2 rounded-lg hover:scale-105 transition">Login</button>
+    <button onclick="openWallet()" class="bg-coffeeGold px-4 py-2 rounded-full font-bold hover:scale-105 transition">🧈 Wallet</button>
+  </div>
+</header>
+
+<!-- MAIN MENU -->
+<main class="p-6 space-y-8">
+
+  <!-- Drinks Menu -->
+  <div id="drinks" class="menu-section">
+    <h2 class="text-xl font-bold text-coffeeGreen mb-4">Drinks Menu ☕</h2>
+    <div class="menu-grid" id="drinksGrid">
+      <div class="item bg-white rounded-xl shadow p-4 text-center">
+        <img src="Image/Latte.png" class="item-img">
+        <h4>Latte</h4>
+        <p>$4.80</p>
+        <button class="order-btn" onclick="addToCart('Latte',4.8)">Order (+15 🧈)</button>
+      </div>
+      <div class="item bg-white rounded-xl shadow p-4 text-center">
+        <img src="Image/Cappucino.png" class="item-img">
+        <h4>Cappucino</h4>
+        <p>$5.00</p>
+        <button class="order-btn" onclick="addToCart('Cappucino',5)">Order (+15 🧈)</button>
+      </div>
+      <!-- add more drinks here -->
+    </div>
+  </div>
+
+  <!-- Food Menu -->
+  <div id="food" class="menu-section">
+    <h2 class="text-xl font-bold text-coffeeGreen mb-4">Food Menu 🍜</h2>
+    <div class="menu-grid" id="foodGrid">
+      <div class="item bg-white rounded-xl shadow p-4 text-center">
+        <img src="Image/Sandwich.png" class="item-img">
+        <h4>Sandwich</h4>
+        <p>$5.00</p>
+        <button class="order-btn" onclick="addToCart('Sandwich',5)">Order (+15 🧈)</button>
+      </div>
+      <!-- add more food items here -->
+    </div>
+  </div>
+
+</main>
+
+<!-- CART BUTTON -->
+<div id="cartBox" onclick="toggleCart()" class="fixed top-5 right-5 cursor-pointer bg-coffeeGold px-4 py-2 rounded-lg font-bold shadow-lg z-40">
+  🛒 Cart: <span id="cartCount">0</span>
+</div>
+
+<!-- CART POPUP -->
+<div id="cartPopup" class="fixed top-0 right-0 w-80 h-96 bg-white shadow-2xl transform translate-x-full transition z-50 p-4 overflow-y-auto rounded-l-xl">
+  <h2 class="text-center font-bold text-coffeeGreen mb-2">🛒 Your Orders</h2>
+  <ul id="cartList" class="space-y-2"></ul>
+  <h3 id="cartTotal" class="font-bold mt-4">Total: $0.00</h3>
+  <button onclick="checkout()" class="mt-4 w-full bg-coffeeGreen text-white py-2 rounded-lg hover:bg-[#014d36] transition">Checkout</button>
+  <button onclick="toggleCart()" class="mt-2 w-full bg-coffeeRed text-white py-2 rounded-lg hover:bg-[#cc1f1f] transition">Close</button>
+</div>
+
+<!-- LOGIN PANEL -->
+<div id="authPanel" class="fixed top-0 left-0 h-full w-80 bg-white shadow-2xl -translate-x-full transition-transform duration-300 z-50">
+  <div class="flex items-center justify-between p-6 border-b">
+    <h2 class="text-2xl font-bold text-coffeeGreen">Login ☕</h2>
+    <button onclick="closeAuth()" class="text-gray-500 text-xl font-bold hover:text-red-500 hover:scale-110 transition">✖</button>
+  </div>
+  <div class="p-6 space-y-4">
+    <input type="email" placeholder="Email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-coffeeGold">
+    <input type="password" placeholder="Password" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-coffeeGold">
+    <button class="w-full bg-coffeeGold py-3 rounded-lg font-bold hover:bg-yellow-500 transition">Login</button>
+  </div>
+</div>
+
+<!-- WALLET PANEL -->
+<div id="walletPanel" class="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl translate-x-full transition-transform duration-300 z-50">
+  <div class="flex items-center justify-between p-6 border-b">
+    <h2 class="text-xl font-bold text-coffeeGreen">Wallet 🧈</h2>
+    <button onclick="closeWallet()" class="text-gray-500 text-xl font-bold hover:text-red-500 hover:scale-110 transition">✖</button>
+  </div>
+  <div class="flex flex-col items-center py-10 space-y-4">
+    <div class="w-20 h-20 rounded-full bg-coffeeGold flex items-center justify-center text-3xl">☕</div>
+    <p class="font-bold text-lg">Chan Viboth</p>
+    <div class="bg-coffeeGreen text-white px-6 py-4 rounded-xl w-3/4 text-center">
+      <p class="text-sm">Coffee Gold</p>
+      <p id="coinAmount" class="text-3xl font-bold">0 🧈</p>
+    </div>
+  </div>
+</div>
+
+<script>
+let wallet = 0;
+let cart = [];
+
+function openAuth(){document.getElementById("authPanel").classList.remove("-translate-x-full")}
+function closeAuth(){document.getElementById("authPanel").classList.add("-translate-x-full")}
+function openWallet(){document.getElementById("walletPanel").classList.remove("translate-x-full")}
+function closeWallet(){document.getElementById("walletPanel").classList.add("translate-x-full")}
+function toggleCart() {
+  const popup = document.getElementById("cartPopup");
+  popup.classList.toggle("translate-x-full");
+}
+
+function addToCart(name, price){
+  // add points
+  wallet += 15;
+  document.getElementById("coinAmount").textContent = wallet + " 🧈";
+
+  // add to cart
+  let existing = cart.find(i=>i.name===name);
+  if(existing){
+    existing.qty +=1;
+  } else {
+    cart.push({name, price, qty:1});
+  }
+  updateCart();
+}
+
+function updateCart(){
+  const cartList = document.getElementById("cartList");
+  cartList.innerHTML = "";
+  let total = 0;
+  let count = 0;
+  cart.forEach((item,i)=>{
+    total += item.price * item.qty;
+    count += item.qty;
+    cartList.innerHTML += `<li class="flex justify-between items-center">
+      <span>${item.name} x${item.qty} - $${(item.price*item.qty).toFixed(2)}</span>
+      <div>
+        <button onclick="changeQty(${i},-1)" class="bg-red-500 text-white px-2 rounded">-</button>
+        <button onclick="changeQty(${i},1)" class="bg-green-500 text-white px-2 rounded">+</button>
+        <button onclick="removeItem(${i})" class="bg-gray-500 text-white px-2 rounded">x</button>
+      </div>
+    </li>`;
+  });
+  document.getElementById("cartCount").textContent = count;
+  document.getElementById("cartTotal").textContent = "Total: $" + total.toFixed(2);
+}
+
+function changeQty(index, delta){
+  cart[index].qty += delta;
+  if(cart[index].qty <= 0){
+    cart.splice(index,1);
+  }
+  updateCart();
+}
+
+function removeItem(index){
+  cart.splice(index,1);
+  updateCart();
+}
+
+function checkout(){
+  if(cart.length === 0){
+    alert("Cart is empty!");
+    return;
+  }
+  alert(`Checked out ${cart.length} items. You earned ${cart.reduce((s,i)=>s+i.qty,0)*15} 🧈`);
+  cart = [];
+  updateCart();
+  wallet = 0;
+  document.getElementById("coinAmount").textContent = wallet + " 🧈";
+}
+</script>
+
+</body>
+</html>

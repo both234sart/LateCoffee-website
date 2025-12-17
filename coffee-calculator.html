@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Late Coffee Calculator</title>
+    <link rel="stylesheet" href="css/coffee-calculator.css" />
+    <link rel="icon" href="Image/apple-calculator.png" />
+  </head>
+  <body>
+    <header class="header-container">
+      <a href="coffee minigames.html">
+      <h2>Calculator</h2>
+      </a>
+    </header>
+
+    <div class="menu-btn" onclick="openMenu()">☰</div>
+    <div id="sideMenu" class="side-menu">
+      <h2>☰</h2>
+      <button class="close-btn" id="closeBtn" onclick="closeMenu()">✖</button>
+      <a href="index.html">Home</a>
+      <a href="Checkout coffee.html">Checkout</a>
+      <a href="coffee minigames.html">Minigames</a>
+      <a href="coffee socials.html">Contact</a>
+    </div>
+    <div id="overlay" onclick="closeMenu()"></div>
+
+    <div id="calculator">
+      <input id="display" readonly>
+      <div id="keys">
+        <button id="calBtn" onclick="appendDisplay('+')" class="operator-btn">+</button>
+        <button id="calBtn" onclick="appendDisplay('7')">7</button>
+        <button id="calBtn" onclick="appendDisplay('8')">8</button>
+        <button id="calBtn" onclick="appendDisplay('9')">9</button>
+        <button id="calBtn" onclick="appendDisplay('-')" class="operator-btn">-</button>
+        <button id="calBtn" onclick="appendDisplay('4')">4</button>
+        <button id="calBtn" onclick="appendDisplay('5')">5</button>
+        <button id="calBtn" onclick="appendDisplay('6')">6</button>
+        <button id="calBtn" onclick="appendDisplay('*')" class="operator-btn">*</button>
+        <button id="calBtn" onclick="appendDisplay('1')">1</button>
+        <button id="calBtn" onclick="appendDisplay('2')">2</button>
+        <button id="calBtn" onclick="appendDisplay('3')">3</button>
+        <button id="calBtn" onclick="appendDisplay('/')" class="operator-btn">/</button>
+        <button id="calBtn" onclick="appendDisplay('0')">0</button>
+        <button id="calBtn" onclick="appendDisplay('.')">.</button>
+        <button id="calBtn" onclick="calculate()">=</button>
+        <button id="calBtn" onclick="clearDisplay()" class="operator-btn">C</button>
+      </div>
+    </div>
+    <script src="javascript/coffee-calculator.js"></script>
+  </body>
+</html>

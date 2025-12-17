@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Late Coffee minigames</title>
+    <link rel="stylesheet" href="css/coffee-minigames.css" />
+    <link rel="icon" href="Image/Late Coffee.png" />
+  </head>
+  <body>
+    <header class="header-container">
+      <a href="index.html">
+        <h2>Late Coffee minigames</h2>
+      </a>
+    </header>
+    <div class="menu-btn" id="menuBtn" onclick="openMenu()">☰</div>
+    <div id="sideMenu" class="side-menu">
+      <h2>☰</h2>
+      <button class="close-btn" id="closeBtn" onclick="closeMenu()">✖</button>
+      <a href="index.html">Home</a>
+      <a href="Checkout coffee.html">Checkout</a>
+      <a href="coffee minigames.html">Minigames</a>
+      <a href="coffee socials.html">Contact</a>
+    </div>
+    <div id="overlay" onclick="closeMenu()"></div>
+
+    <div class="miniGamesList">
+      <div class="miniGamesContainer rock-paper-scissors">
+        <a href="coffee rps.html" target="_self">
+          <img src="Image/rps.jpg" class="miniGamesLogo" />
+          Play Rock Paper Scissors
+        </a>
+      </div>
+      <div class="miniGamesContainer tic-tac-toe">
+        <a href="coffee-tictactoe.html" target="_self">
+          <img src="Image/tictactoe.png" class="miniGamesLogo" />
+          Play TIC TAC TOE
+        </a>
+      </div>
+
+      <div class="miniGamesContainer text-to-speech">
+        <a href="coffee-texttospeech.html" target="_self">
+          <img src="Image/texttospeech.png" class="miniGamesLogo" />
+          Try out Text to speech
+        </a>
+      </div>
+
+      <div class="miniGamesContainer calculator">
+        <a href="coffee-calculator.html" target="_self">
+          <img src="Image/apple-calculator.png" class="miniGamesLogo" />
+          Why you want to play calculator😴
+        </a>
+      </div>
+    </div>
+    <script src="javascript/coffee-minigame.js"></script>
+  </body>
+</html>

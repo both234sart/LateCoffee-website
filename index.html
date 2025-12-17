@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width: initial-scale=1.0">
+<title>Coffee Homepage</title>
+<link rel="icon" type="Image/png" href="Image/Late Coffee.png">
+<link rel="stylesheet" href="css/Coffee homepage.css">
+</head>
+<body>
+  
+  <div class="bee-cursor"></div>
+  <header class="header-container">
+    <a href="index.html">
+    <h2>Late Coffee</h2>
+    </a>
+    <input type="text" id="searchBar" placeholder="Search for food or drinks...">
+  </header>
+  
+  <div class="menu-btn" onclick="openMenu()">☰</div>
+  <div id="sideMenu" class="side-menu">
+    <h2>☰</h2>
+    <button class="close-btn" onclick="closeMenu()">✖</button>
+    <a href="index.html">Home</a>
+    <a href="#drinking" onclick="navigateAndClose()">Drinks</a>
+    <a href="#fooding" onclick="navigateAndClose()">Food</a>
+    <a href="Checkout coffee.html">Checkout</a>
+    <a href="coffee socials.html">Contact</a>
+  </div>
+  <div id="overlay" onclick="closeMenu()"></div>
+
+  <div class="menu-section" id="drinking">
+    <h3>Drinks Menu☕</h3>
+    <button class="slide-btn left" onclick="slideLeft('drinks')">❮</button>
+    <button class="slide-btn right" onclick="slideRight('drinks')">❯</button>
+    <div class="menu-grid" id="drinks">
+      <div class="item">
+        <img src="Image/Latte.png" class="item-img">
+        <h4>Latte</h4>
+        <p>$4.80</p>
+        <button class="order-btn">Order</button>
+      </div>
+      <div class="item">
+        <img src="Image/Cappucino.png" class="item-img">
+        <h4>Cappucino</h4>
+        <p>$5.00</p>
+        <button class="order-btn">Order</button>
+      </div>        
+      <div class="item">
+        <img src="Image/Iced coffe.jpg" class="item-img">
+        <h4>Iced-coffee</h4>
+        <p>$2.00</p>
+        <button class="order-btn">Order</button>
+      </div>
+      <div class="item">
+        <img src="Image/Matcha-milk-tea.jpg" class="item-img">
+        <h4>Matcha</h4>
+        <p>$4.50</p>
+        <button class="order-btn">Order</button>
+      </div>
+      <div class="item">
+        <img src="Image/Lemon Iced tea.jpg" class="item-img">
+        <h4>Lemon Iced tea</h4>
+        <p>$2.00</p>
+        <button class="order-btn">Order</button>
+      </div>
+      <div class="item">
+        <img src="Image/Cane Juice.jpg" class="item-img">
+        <h4>Cane Juice</h4>
+        <p>$3.50</p>
+        <button class="order-btn">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-section" id="fooding">
+    <h3>Food Menu🍜</h3>
+    <button class="slide-btn left" onclick="slideLeft('food')">❮</button>
+    <button class="slide-btn right" onclick="slideRight('food')">❯</button>
+    <div class="menu-grid" id="food">
+      <div class="item">
+        <img src="Image/Sandwich.png" class="item-img">
+        <h4>Sandwich</h4>
+        <p>$5.00</p>
+        <button class="order-btn">Order</button>
+      </div>
+      <div class="item">
+        <img src="Image/Croissant.png" class="item-img">
+        <h4>Croissant</h4>
+        <p>$4.50</p>
+        <button class="order-btn">Order</button>
+      </div>
+      <div class="item">
+        <img src="Image/chili-oil-noodles-with-garlic-and-green-onion.jpg" class="item-img">
+        <h4>Chili-oil Noodles</h4>
+        <p>$7.00</p>
+        <button class="order-btn">Order</button>
+      </div>
+      <div class="item">
+        <img src="Image/kuy-teav.jpg" class="item-img">
+        <h4>Kuy Teav with Beef balls/Fish balls</h4>
+        <p>$10.00</p>
+        <button class="order-btn">Order</button>
+      </div>
+      <div class="item">
+        <img src="Image/Bai-Sach-Chrouk.jpg" class="item-img">
+        <h4>Bay Sach Jruk with an omelette</h4>
+        <p>$6.50</p>
+        <button class="order-btn">Order</button>
+      </div>
+      <div class="item">
+        <img src="Image/Num-Banh-Chok-Khmer.jpg" class="item-img">
+        <h4>Num Banh Chok (Broher Soup)</h4>
+        <p>$7.50</p>
+        <button class="order-btn">Order</button>
+      </div>
+      <div class="item">
+        <img src="Image/Num Banh Chok Curry.jpg" class="item-img">
+        <h4>Num Banh Chok (Curry Soup)</h4>
+        <p>$8.50</p>
+        <button class="order-btn">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="order-form" id="orderForm" style="display:none;">
+    <h3 style="text-align: center; text-shadow: 0 0 8px #ffbb00;">Place Your Order</h3>
+    <label for="item">Select Item</label>
+    <input type="text" id="orderItem" readonly>
+    <br>
+    <label>Your Name</label>
+    <input type="text" id="orderName" placeholder="Enter your name" required>
+
+    <label>Alternate Ingredients / Specials Request</label>
+    <textarea rows="4" id="orderSpecials" placeholder="Example: 50% sugar"></textarea>
+    <button class="submit-btn" onclick="submitOrder()">Submit Order</button>
+  </div>
+  <div id="cartBox" onclick="openCart()" style="
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    background: #ffbb00;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 200;">
+    🛒Cart: 
+    <span id="cartCount">0</span>  
+  </div>
+  <div id="cartPopup" style="
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: white;
+    color: black;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.4);
+    transform: translateX(100%);
+    transition: 0.3s ease;
+    padding: 20px;
+    z-index: 300;
+    overflow-y: auto;
+    border-radius: 20px 0 0 20px;">
+    
+    <h2 style="text-align: center;">🛒Your Order(s)</h2>
+    <ul id="cartList" style="padding: 20; list-style: none; font-size: 18px;"></ul>
+
+    <button onclick="closeCart()" style="
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: #026849;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      ">Close</button>
+
+    <button onclick="gotoCheckout()" style="
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background: #ff2f20;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      ">Checkout</button>
+  </div> 
+
+  <script src="javascript/Coffee homepage.js"></script>
+
+  <footer>
+    <p>2025 Houn Chanviboth. All rights reserved.</p>
+  </footer>
+</body>
+</html>
