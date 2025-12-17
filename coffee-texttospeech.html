@@ -27,5 +27,37 @@
     >
       📢Speaker
     </button>
+    <script>
+  const textarea = document.getElementById("t");
+  let voices = [];
+
+  function loadVoices() {
+    voices = speechSynthesis.getVoices();
+  }
+
+  // Some mobile browsers load voices asynchronously
+  speechSynthesis.onvoiceschanged = loadVoices;
+
+  function speakText() {
+    if (!textarea.value.trim()) return;
+
+    speechSynthesis.cancel(); // stop previous speech
+
+    const utterance = new SpeechSynthesisUtterance(textarea.value);
+
+    // Pick an English voice if available (better mobile support)
+    const englishVoice = voices.find(v => v.lang.startsWith("en"));
+    if (englishVoice) utterance.voice = englishVoice;
+
+    utterance.rate = 1;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+
+    speechSynthesis.speak(utterance);
+
+    if (navigator.vibrate) navigator.vibrate(50);
+  }
+</script>
   </body>
 </html>
+
